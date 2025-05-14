@@ -1,0 +1,11 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-by-ip
+  namespace: default
+spec:
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        ipBlocks: ["10.0.0.0/24", "192.168.1.1/32"]
