@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-nodepool
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: aks-nodepool
+  template:
+    metadata:
+      labels:
+        app: aks-nodepool
+    spec:
+      containers:
+        - name: aks-nodepool-container
+          image: nginx:latest
+          ports:
+            - containerPort: 80

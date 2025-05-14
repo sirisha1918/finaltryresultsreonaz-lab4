@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: fault-injection
+  namespace: default
+spec:
+  hosts:
+  - productpage
+  http:
+  - fault:
+      delay:
+        percentage: 100
+        fixedDelay: 5s
+    route:
+    - destination:
+        host: productpage
+        port:
+          number: 9080
